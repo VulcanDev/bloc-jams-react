@@ -42,11 +42,12 @@ class Album extends Component {
         this.audioElement.removeEventListener('durationchange', this.eventListeners.durationchange);
     }
 
-    formatTime(seconds) {
+    formatTime(seconds, hasPlaceHolder) {
         let minutes;
         let newSeconds;
+        hasPlaceHolder = hasPlaceHolder || false;
 
-        if ((this.state.isPlaying || this.state.currentTime > 0) && !isNaN(seconds)) {
+        if ((this.state.isPlaying || this.state.currentTime > 0 || !hasPlaceHolder) && !isNaN(seconds)) {
             minutes = Math.floor(seconds / 60);
             newSeconds = Math.floor(seconds - (Math.floor(seconds / 60) * 60));
             newSeconds = newSeconds < 10 ? '0' + newSeconds : newSeconds;
@@ -146,7 +147,7 @@ class Album extends Component {
                                     </button>
                                 </td>
                                 <td className="song-title">{song.title}</td>
-                                <td className="song-duration">{song.duration}</td>
+                                <td className="song-duration">{this.formatTime(song.duration)}</td>
                             </tr>
                         )}
                     </tbody>
@@ -157,7 +158,7 @@ class Album extends Component {
                     currentTime={this.audioElement.currentTime}
                     duration={this.audioElement.duration}
                     currentVolume={this.audioElement.volume}
-                    formattedTime={this.formatTime(this.audioElement.currentTime)}
+                    formattedTime={this.formatTime(this.audioElement.currentTime, true)}
                     handleSongClick={() => this.handleSongClick(this.state.currentSong)}
                     handlePrevClick={() => this.handlePrevClick()}
                     handleNextClick={() => this.handleNextClick()}
