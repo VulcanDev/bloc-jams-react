@@ -27,7 +27,7 @@ class PlayerBar extends Component {
                         step="0.01"
                         onChange={this.props.handleTimeChange}
                     />
-                    <div className="total-time">{this.props.formattedDuration}</div>
+                    <div className="time-left">-{this.props.formattedTimeLeft}</div>
                 </section>
                 <section id="volume-control">
                     <div className="icon ion-volume-low"></div>
