@@ -1,28 +1,453 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+/* General */
+
+* {
+  font-family: Roboto, Arial, Helvetica, sans-serif;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+a {
+  text-decoration: none;
+}
+
+/* Keyframes */
+
+@keyframes slideInFromBottom {
+  0% {
+    transform: translateY(150%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Header */
+
+nav {
+  float:right;
+  margin-right: 1rem;
+  height: 100%;
+}
+
+nav a {
+  color: #fff;
+  line-height: 2.7rem;
+  font-size:1.2rem;
+  font-weight: bold;
+}
+
+nav a:hover {
+  color: #f50057;
+}
+
+body {
+  background: #212121;
 }
 
 .App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
+  height: 5rem;
+  background: #212121;
+}
+
+/* Landing Page */
+
+.logo {
+  padding: 0;
+  margin: 0;
+  width: auto;
+  padding: 1rem;
+  height: 3rem;
+  left: 0;
+}
+
+.banner {
+  position: relative;
+  text-align: center;
+}
+
+.banner-img {
+  width: 100%;
+  height: auto;
+}
+
+.hero-title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  font-size: 5rem;
+  color: #f50057;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.selling-points {
+  color: #fff;
+  text-align: center;
+}
+
+.icon {
+  font-size: 6rem;
+  color: #f50057;
+}
+
+.point {
+  display: inline-block;
+  width: 15%;
+  padding: 5rem;
+}
+
+@media screen and (max-width: 800px) { /* Mobile */
+  .banner-img {
+    height: 320px;
+    object-fit: cover;
+  }
+  
+  .hero-title {
+    font-size: 240%;
+  }
+
+  .point {
+    min-width: 300px;
+    padding: 5rem 0 0 0;
+  }
+}
+
+/* Library*/
+
+.library {
+  width: 85%;
+  padding: 0 1rem;
+  margin: auto;
+}
+
+.album-link {
+  position: relative;
+  color: #fff;
+  display: inline-block;
+  margin: 2.5rem;
+  padding: 0.1rem;
+  width: fit-content;
+  text-align: center;
+  top: 0;
+  transition: top ease 0.2s;
+}
+
+.album-link:hover {
+  top: -10px;
+  transition: 0.2s;
+}
+
+.album-link img {
+  width: 20rem;
+  user-drag: none; 
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+.album-name {
+  font-weight: bolder;
+  font-size: 115%;
+  margin: auto;
+  width: fit-content;
+}
+
+.album-artist {
+  color: #bdbdbd;
+  margin: auto;
+  width: fit-content;
+}
+
+@media screen and (max-width: 800px) { /* Mobile */
+  .library {
+    padding: 0;
+    margin: auto;
+  }
+
+  .album-link {
+    padding: 0;
+    margin: 2.5rem auto;
+  }
+}
+
+/* Album */
+
+button {
+  background: transparent;
+  color: #fff;
+  border: none;
+}
+
+button:focus {
+  outline: none;
+}
+
+.album {
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.album-info {
+  width: 25%;
+}
+
+.album-details {
+  color: #fff;
+  text-align: center;
+}
+
+.invisible {
+  display: none;
+}
+
+.song {
+  line-height: 3rem;
+  cursor: pointer;
+}
+
+.song .ion-play {
+  display: none;
+}
+
+.song .ion-pause {
+  vertical-align: -0.2rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.song:hover {
+  background: #c51162;
+}
+
+.song:hover .song-number {
+  display: none;
+}
+
+.song:hover .ion-play {
+  vertical-align: -0.2rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: inline;
+}
+
+.song-actions {
+  width: 3rem;
+  cursor: pointer;
+}
+
+.song-duration {
+  width: 3rem;
+}
+
+.song-list-container {
+  display: inline-block;
+  width: 65%;
+  margin: auto;
+  padding: 5rem;
+  vertical-align: top;
+}
+
+.artist, 
+#release-info {
+  color: #bdbdbd;
+  font-weight: 400;
+  margin: 0.5rem;
+}
+
+#album-info {
+  display: inline-block;
+  width: fit-content;
+  padding: 5rem 5rem 0 5rem;
+}
+
+#album-cover-art {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+
+#album-title {
+  font-weight: bolder;
+  font-size: 2rem;
+  margin: 0.5rem;
+}
+
+#song-list {
+  color: #fff;
+  border-collapse: collapse;
+  width: 80%;
+}
+
+
+/* Player Bar */
+
+input[type=range] {
+  -webkit-appearance: none;
+  display: inline-block;
+  background: transparent;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  display: hidden;
+  height: 1rem;
+  width: 1rem;
+  margin-top: -0.34rem;
+  border: none;
+  border-radius: 100%;
+  background: #fff;
+  cursor: pointer;
+  transition: ease 0.1s;
+}
+
+input[type=range]:hover::-webkit-slider-thumb {
+  height: 1.2rem;
+  width: 1.2rem;
+  margin-top: -0.46rem;
+  color: #f50057;
+  transition: 0.1s;
+}
+
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 0.3rem;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  color:transparent;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  border-radius: 1rem;
+  cursor: pointer;
+  height: 0.3rem;
+  background: #fff;
+}
+
+input[type=range]:focus {
+  outline: none;
+}
+
+.player-bar {
   color: white;
+  background: #f50057;
+  position: fixed;
+  text-align: center;
+  left: 0;
+  bottom: 0;
+  height: 8rem;
+  width: 100%;
+  overflow: hidden;
 }
 
-.App-title {
-  font-size: 1.5em;
+.player-bar-controls {
+  padding: 1rem;
 }
 
-.App-intro {
-  font-size: large;
+.play-icon {
+  font-size: 2.5rem;
+  cursor: pointer;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.player-icon {
+  font-size: 2rem;
+  margin: 0 5rem;
+  cursor: pointer;
+}
+
+.seek-bar {
+  width: 50vw;
+  vertical-align: 0.15rem;
+}
+
+.current-time {
+  display: inline-block;
+  padding-right: 0.5rem;
+}
+
+.time-left {
+  display: inline-block;
+  padding-left: 0.5rem;
+}
+
+.volume-bar {
+  vertical-align: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.volume-icon {
+  display: inline-block;
+  padding-right: 0.5rem;
+  font-size: 1.6rem;
+}
+
+#time-control {
+  display: inline-block;
+  width: fit-content;
+  margin: 0;
+  padding: 0;
+}
+
+#volume-control {
+  display: inline-block;
+  position: fixed;
+  width: fit-content;
+  height: 1rem;
+  right: 0;
+}
+
+@media screen and (max-width: 800px) { /* Mobile */
+
+  .album {
+    margin-bottom: 10rem;
+    width: 100%;
+    overflow: auto;
+    white-space: normal;
+  }
+
+  .album-info {
+    width: 100%;
+  }
+
+  .song-list-container {
+    display: block;
+    width: 100%;
+    padding: 0;
+    height: auto;
+  }
+
+  .player-bar {
+    animation: 1s ease-out 0s 1 slideInFromBottom;
+    height: 9rem;
+  }
+  
+  .player-icon {
+    margin: 0 1rem;
+  }
+
+  .seek-bar {
+    width: 16rem;
+  }
+
+  #album-cover-art {
+    padding: 1rem 0;
+    width: 100%;
+    height: auto;
+  }
+
+  #album-info {
+    padding: 1rem 0;
+  }
+  
+  #song-list {
+    width: 100%;
+  }
+  
+  #volume-control {
+    display: none;
+  }
 }

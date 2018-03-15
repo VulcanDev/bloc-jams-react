@@ -11,10 +11,9 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <nav>
-            <Link to='/'>Landing</Link>
-            <Link to='/Library'>Library</Link>
+            <Link to='/Library'><p>Library</p></Link>
           </nav>
-          <h1>Bloc AM</h1>
+          <Link to='/'><img className="logo" src='/assets/images/BlocAMLogo.png' alt="Bloc AM Logo" style={{ textDecoration: 'none' }} /></Link>
         </header>
         <main>
           <Route exact path="/" component={Landing} />

@@ -13,5 +13,5 @@ This is a project where I've built a site that allows a user to view a library o
 ![Library](https://i.imgur.com/kT0jTTa.png)
 #### Library
 
-![Album page](https://i.imgur.com/GJnYiKw.png)
+![Album page](https://i.imgur.com/HuMxHbP.png)
 #### Album Page
