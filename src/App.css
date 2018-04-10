@@ -161,15 +161,21 @@ body {
   width: fit-content;
 }
 
-@media screen and (max-width: 800px) { /* Mobile */
+@media screen and (max-width: 440px) { /* Mobile */
   .library {
+    max-width: 100%;
+    text-align: center;
     padding: 0;
-    margin: auto;
+    margin: 0;
   }
 
   .album-link {
     padding: 0;
-    margin: 2.5rem auto;
+    margin: 0.5rem auto;
+  }
+
+  .album-link img {
+    width: 100vw;
   }
 }
 
@@ -400,17 +406,14 @@ input[type=range]:focus {
   right: 0;
 }
 
-@media screen and (max-width: 800px) { /* Mobile */
+@media screen and (max-width: 1650px) { /* Smaller */
 
   .album {
     margin-bottom: 10rem;
     width: 100%;
     overflow: auto;
     white-space: normal;
-  }
-
-  .album-info {
-    width: 100%;
+    text-align: center;
   }
 
   .song-list-container {
@@ -441,13 +444,16 @@ input[type=range]:focus {
 
   #album-info {
     padding: 1rem 0;
+    margin: auto;
   }
   
   #song-list {
     width: 100%;
   }
   
-  #volume-control {
-    display: none;
+  @media screen and (max-width: 800px) { /* Mobile */
+    #volume-control {
+      display: none;
+    }
   }
 }
